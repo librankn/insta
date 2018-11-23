@@ -9,6 +9,7 @@ class IgclsController < ApplicationController
     @igcl=Igcl.new(igcl_params)
     @igcl.user_id = current_user.id
     if @igcl.save
+      ContactMailer.contact_mail(@igcl).deliver
       redirect_to igcls_path, notice: "ブログを作成しました！"
     else
       render 'new'
