@@ -1,11 +1,13 @@
 class IgclsController < ApplicationController
+  before_action :check_login
   before_action :set_igcl,only: [:show, :edit, :update, :destroy]
   def index
     @igcls=Igcl.all
   end
 
   def create
-    @igcl=Igcl.create(igcl_params)
+    @igcl=Igcl.new(igcl_params)
+    @igcl.user_id = current_user.id
     if @igcl.save
       redirect_to igcls_path, notice: "ブログを作成しました！"
     else
@@ -22,7 +24,9 @@ class IgclsController < ApplicationController
   end
 
   def show
-    
+    @igcl = Igcl.find(params[:id])
+    @user = @igcl.user
+    @favorite = current_user.favorites.find_by(igcl_id: @igcl.id)
   end
 
   def edit
@@ -30,7 +34,6 @@ class IgclsController < ApplicationController
   end
 
   def update
-    
     if @igcl.update(igcl_params)
       redirect_to igcls_path, notice: "ブログを編集しました！"
     else
@@ -45,6 +48,7 @@ class IgclsController < ApplicationController
 
   def confirm
     @igcl = Igcl.new(igcl_params)
+    @igcl.user_id = current_user.id
     render :new if @igcl.invalid?
 
   end
@@ -58,4 +62,11 @@ class IgclsController < ApplicationController
   def set_igcl
     @igcl=Igcl.find(params[:id])
   end
+
+  def check_login
+    if !logged_in?
+      redirect_to new_session_path
+    end
+  end
+
 end

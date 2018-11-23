@@ -6,12 +6,14 @@
   <tr>
     <th>タイトル</th>
     <th>内容</th>
+    <th>投稿者</th>
   </tr>
 
 <% @igcls.each do |igcl| %>
   <tr>
     <td><%= igcl.title %></td>
     <td><%= igcl.content %></td>
+    <td><%= igcl.user.name %></td>
     <td><%= link_to '詳細を確認する', igcl_path(igcl.id) %></td>
     <td><%= link_to "ブログを編集する", edit_igcl_path(igcl.id) , data: { confirm: '本当に編集していいですか？' } %>
     <td><%= link_to 'ブログを削除する', igcl_path(igcl.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
