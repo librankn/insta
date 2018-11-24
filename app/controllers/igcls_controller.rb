@@ -57,7 +57,7 @@ class IgclsController < ApplicationController
   private
 
   def igcl_params
-    params.require(:igcl).permit(:title,:content)
+    params.require(:igcl).permit(:title,:content,:image,:image_cache)
   end
 
   def set_igcl

@@ -1,7 +1,8 @@
 class ContactMailer < ApplicationMailer
   def contact_mail(contact)
-    @contact = contact
+    @igcl = contact
+    email = @igcl.user.email
 
-    mail to: "kkuroto@gmail.com", subject: "投稿確認メール"
+    mail to: email, subject: "投稿確認メール"
   end
 end

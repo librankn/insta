@@ -1,7 +1,13 @@
 <h1>ブログ詳細画面</h1>
 <p>タイトル: <%= @igcl.title %></p>
 <p>内容: <%= @igcl.content %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @igcl.image.url %>
+</p>
 
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>
 
 
 <% unless @igcl.user_id == current_user.id %>
