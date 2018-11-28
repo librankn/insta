@@ -1,6 +1,4 @@
-<h1>ブログ一覧</h1>
-
-<p><%= notice %></p>
+<h1>投稿一覧</h1>
 
 <table>
   <tr>
@@ -8,16 +6,20 @@
     <th>内容</th>
     <th>投稿者</th>
   </tr>
-
+<br>
 <% @igcls.each do |igcl| %>
   <tr>
     <td><%= igcl.title %></td>
     <td><%= igcl.content %></td>
     <td><%= igcl.user.name %></td>
-    <td><%= link_to '詳細を確認する', igcl_path(igcl.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_igcl_path(igcl.id) , data: { confirm: '本当に編集していいですか？' } %>
-    <td><%= link_to 'ブログを削除する', igcl_path(igcl.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+    <br>
+    <td><button type="button" class="btn btn-info btn-sm"><%= link_to '詳細', igcl_path(igcl.id) %></button></td>
+    <td><button type="button" class="btn btn-default btn-sm"><%= link_to "編集", edit_igcl_path(igcl.id) , data: { confirm: '本当に編集していいですか？' } %></button></td>
+    <td><button type="button" class="btn btn-danger btn-sm"><%= link_to '削除', igcl_path(igcl.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
   </tr>
+  <br>
 <% end %>
 </table>
-<%= link_to '新しくブログを投稿する', new_igcl_path %>
+
+  <br>
+<%= link_to '新規投稿', new_igcl_path %>

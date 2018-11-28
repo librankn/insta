@@ -1,4 +1,4 @@
-<h1>ブログ詳細画面</h1>
+<h1>投稿詳細画面</h1>
 <p>タイトル: <%= @igcl.title %></p>
 <p>内容: <%= @igcl.content %></p>
 <p>
@@ -6,10 +6,9 @@
   <%= image_tag @igcl.image.url %>
 </p>
 
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
-
-
+<%= link_to 'Edit', edit_igcl_path(@igcl) %> |
+<%= link_to 'Back', igcls_path %>
+<br>
 <% unless @igcl.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -17,5 +16,5 @@
     <%= link_to 'お気に入りする', favorites_path(igcl_id: @igcl.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
-<%= link_to 'ブログ一覧画面にもどる', igcls_path %>
+<br>
+<%= link_to ' 一覧へ', igcls_path %>

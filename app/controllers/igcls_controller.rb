@@ -7,10 +7,11 @@ class IgclsController < ApplicationController
 
   def create
     @igcl=Igcl.new(igcl_params)
+    @igcl.image.retrieve_from_cache! params[:cache][:image]
     @igcl.user_id = current_user.id
     if @igcl.save
       ContactMailer.contact_mail(@igcl).deliver
-      redirect_to igcls_path, notice: "ブログを作成しました！"
+      redirect_to igcls_path, notice: "投稿を作成しました！"
     else
       render 'new'
     end
@@ -19,6 +20,7 @@ class IgclsController < ApplicationController
   def new
     if params[:back]
       @igcl = Igcl.new(igcl_params)
+      @igcl.image.retrieve_from_cache! params[:cache][:image]
     else
       @igcl=Igcl.new
     end
@@ -36,7 +38,7 @@ class IgclsController < ApplicationController
 
   def update
     if @igcl.update(igcl_params)
-      redirect_to igcls_path, notice: "ブログを編集しました！"
+      redirect_to igcls_path, notice: "投稿を編集しました！"
     else
       render 'edit'
     end
@@ -44,7 +46,7 @@ class IgclsController < ApplicationController
 
   def destroy
     @igcl.destroy
-    redirect_to igcls_path, notice:"ブログを削除しました！"
+    redirect_to igcls_path, notice:"投稿を削除しました！"
   end
 
   def confirm

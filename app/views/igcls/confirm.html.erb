@@ -3,16 +3,17 @@
 <%= form_with(model: @igcl, url: igcls_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <%= image_tag(@igcl.image.url) %>
-  <%= form.hidden_field :image_cache %>
+
 
   <p>タイトル:<%= @igcl.title %></p>
   <p>本文:<%= @igcl.content %></p>
-  <%= form.submit  "登録する" %>
+  <p>イメージ<%= image_tag(@igcl.image.url) %></p>
+  <%= hidden_field_tag :"cache[image]",@igcl.image.cache_name %>
+  <%= form.submit  " 投稿する", :class => 'btn btn-warning'%>
 <% end %>
 
 <%= form_with(model: @igcl, url: new_igcl_path, local: true, method: 'get') do |form| %>
-  <%= form.hidden_field :image_cache %>
+  <%= hidden_field_tag :"cache[image]",@igcl.image.cache_name %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
   <%= form.submit "もどる", name: 'back' %>

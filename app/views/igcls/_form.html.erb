@@ -20,13 +20,14 @@
   </div>
   <div class="field">
     <%= form.label :image %>
-      <%= image_tag(@igcl.image.url) if @igcl.image.url %>
-    <%= form.file_field :image %>
+    <%= image_tag(@igcl.image.url) if @igcl.image.url %>
+    <%= form.file_field :image, id: :igcl_image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "投稿する", :class => 'btn btn-default' %>
   </div>
 <% end %>
 
-<%= link_to "ブログ一覧画面にもどる", igcls_path %>
+<%= link_to "投稿一覧画面にもどる", igcls_path, class: 'btn btn-default'  %>
