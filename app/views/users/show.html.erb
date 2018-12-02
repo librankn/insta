@@ -2,15 +2,7 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
-
-<p>お気に入り一覧</p>
-<% @favorites_igcls.each do |favorite_igcl| %>
-  <tr>
-    <td>タイトル:<%= favorite_igcl.title %></td>
-    <td>内容:<%= favorite_igcl.content %></td>
-    <td>投稿者:<%= favorite_igcl.user.name%>
-    <td><%= link_to '詳細を確認する', igcl_path(favorite_igcl.id) %></td>
-  </tr>
-<% end %>
 <br>
-<%= link_to '一覧へ', igcls_path %>
+
+<%= link_to '投稿一覧へ', igcls_path %>
+<%= link_to ' お気に入り一覧へ', favorites_path %>

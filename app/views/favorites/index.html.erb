@@ -1,0 +1,11 @@
+<h2>お気に入り一覧</h2>
+<% @favorites.each do |favorite_igcl| %>
+  <table>
+    <tr><p>画像:<%= image_tag favorite_igcl.image.url %></tr>
+    <tr><p>タイトル:<%= favorite_igcl.title %></tr>
+    <tr><p>内容:<%= favorite_igcl.content %></tr>
+    <tr><p>投稿者:<%= favorite_igcl.user.name%></tr>
+  </table>
+<% end %>
+
+<%= link_to "ユーザーページへ戻る", user_path(current_user.id) %>

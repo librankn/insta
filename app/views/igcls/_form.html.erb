@@ -1,3 +1,4 @@
+<div class = forms>
 <%= form_with(model: @igcl, local: true ,url: choose_new_or_edit) do |form| %>
   <% if @igcl.errors.any? %>
     <div id="error_explanation">
@@ -10,24 +11,25 @@
     </div>
   <% end %>
 
-  <div class="igcl_title">
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
-  <div class="igcl_title">
+  <div class="field">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
   <div class="field">
-    <%= form.label :image %>
-    <%= image_tag(@igcl.image.url) if @igcl.image.url %>
-    <%= form.file_field :image, id: :igcl_image %>
-    <%= form.hidden_field :image_cache %>
+    <%= form.label :image -%>
+    <%= image_tag(@igcl.image.url) if @igcl.image.url -%>
+    <%= form.file_field :image, id: :igcl_image, class: :igcl_image -%>
+    <%= form.hidden_field :image_cache -%>
   </div>
 
   <div class="actions">
     <%= form.submit "投稿する", :class => 'btn btn-default' %>
   </div>
 <% end %>
-
+</div>
 <%= link_to "投稿一覧画面にもどる", igcls_path, class: 'btn btn-default'  %>

@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     @favorites_igcls = @user.favorite_igcls
   end
 
+  def favorite
+
+  end
+
   private
 
   def user_params

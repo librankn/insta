@@ -6,8 +6,9 @@
   <%= image_tag @igcl.image.url %>
 </p>
 
-<%= link_to 'Edit', edit_igcl_path(@igcl) %> |
+<%= link_to 'Edit', edit_igcl_path(@igcl) , class: 'btn btn-primary'%> |
 <%= link_to 'Back', igcls_path %>
+<br>
 <br>
 <% unless @igcl.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -17,4 +18,5 @@
   <% end %>
 <% end %>
 <br>
-<%= link_to ' 一覧へ', igcls_path %>
+<br>
+<%= link_to ' 投稿一覧へ', igcls_path , class: 'btn btn-info'%>
