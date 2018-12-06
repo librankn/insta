@@ -9,12 +9,12 @@
   <p>本文:<%= @igcl.content %></p>
   <p>イメージ<%= image_tag(@igcl.image.url) %></p>
   <%= hidden_field_tag :"cache[image]",@igcl.image.cache_name %>
-  <%= form.submit  " 投稿する", :class => 'btn btn-warning'%>
+  <%= form.submit  " 投稿する", class: 'btn btn-warning actions'%>
 <% end %>
 
 <%= form_with(model: @igcl, url: new_igcl_path, local: true, method: 'get') do |form| %>
   <%= hidden_field_tag :"cache[image]",@igcl.image.cache_name %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <%= form.submit "もどる", name: 'back' %>
+  <%= form.submit "もどる", name: 'back' , class: 'btn btn-default actions'%>
 <% end %>

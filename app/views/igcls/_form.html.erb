@@ -14,22 +14,25 @@
 
   <div class="field">
     <%= form.label :title %>
+    <br>
     <%= form.text_field :title %>
   </div>
   <div class="field">
     <%= form.label :content %>
+    <br>
     <%= form.text_field :content %>
   </div>
   <div class="field">
     <%= form.label :image -%>
     <%= image_tag(@igcl.image.url) if @igcl.image.url -%>
-    <%= form.file_field :image, id: :igcl_image, class: :igcl_image -%>
-    <%= form.hidden_field :image_cache -%>
+    <%= form.file_field :image, class: "igcl_image" %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "投稿する", :class => 'btn btn-default' %>
-  </div>
+  <%= form.submit "投稿する", class: "btn btn-warning actions" %>
+
+
 <% end %>
 </div>
-<%= link_to "投稿一覧画面にもどる", igcls_path, class: 'btn btn-default'  %>
+
+<%= link_to "投稿一覧画面にもどる", igcls_path, class: "btn btn-default actions"  %>
