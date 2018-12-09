@@ -7,7 +7,7 @@ class IgclsController < ApplicationController
 
   def create
     @igcl=Igcl.new(igcl_params)
-    @igcl.image.retrieve_from_cache! params[:cache][:image]
+    @igcl.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
     @igcl.user_id = current_user.id
     if @igcl.save
       ContactMailer.contact_mail(@igcl).deliver
@@ -33,7 +33,7 @@ class IgclsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update

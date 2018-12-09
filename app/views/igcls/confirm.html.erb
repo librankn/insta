@@ -7,7 +7,7 @@
 
   <p>タイトル:<%= @igcl.title %></p>
   <p>本文:<%= @igcl.content %></p>
-  <p>イメージ<%= image_tag(@igcl.image.url) %></p>
+  <p>画像<%= image_tag @igcl.image %></p>
   <%= hidden_field_tag :"cache[image]",@igcl.image.cache_name %>
   <%= form.submit  " 投稿する", class: 'btn btn-warning actions'%>
 <% end %>
