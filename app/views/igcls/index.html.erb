@@ -12,9 +12,12 @@
     <td><%= igcl.title %></td>
     <td><%= igcl.content %></td>
     <td><%= igcl.user.name %></td>
+
     <td><button type="button" class="btn btn-info btn-sm"><%= link_to "詳細", igcl_path(igcl.id) %></button>
-    <button type="button" class="btn btn-warning btn-sm"><%= link_to "編集", edit_igcl_path(igcl.id) , data: { confirm: "本当に編集していいですか？" } %></button>
-    <button type="button" class="btn btn-danger btn-sm"><%= link_to "削除", igcl_path(igcl.id), method: :delete ,data: { confirm: "本当に削除していいですか？" } %></button></td>
+    <% if current_user.id == igcl.user_id %>
+      <button type="button" class="btn btn-warning btn-sm"><%= link_to "編集", edit_igcl_path(igcl.id) , data: { confirm: "本当に編集していいですか？" } %></button>
+      <button type="button" class="btn btn-danger btn-sm"><%= link_to "削除", igcl_path(igcl.id), method: :delete ,data: { confirm: "本当に削除していいですか？" } %></button></td>
+    <% end %>
   </tr>
 
 <% end %>

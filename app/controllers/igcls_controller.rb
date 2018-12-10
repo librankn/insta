@@ -1,6 +1,7 @@
 class IgclsController < ApplicationController
   before_action :check_login
   before_action :set_igcl,only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user,only: [:edit, :update, :destroy]
   def index
     @igcls=Igcl.all
   end
@@ -69,6 +70,14 @@ class IgclsController < ApplicationController
   def check_login
     if !logged_in?
       redirect_to new_session_path
+    end
+  end
+
+  def ensure_correct_user
+    @igcl = Igcl.find_by(id:params[:id])
+    if @igcl.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to(igcls_path)
     end
   end
 

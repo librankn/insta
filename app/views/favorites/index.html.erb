@@ -2,19 +2,19 @@
 <% @favorites.each do |favorite_igcl| %>
   <table>
     <tr>
-      <th>画像:</th>
+      <th>画像</th>
       <td><%= image_tag favorite_igcl.image %></td>
     </tr>
     <tr>
-      <th>タイトル:</th>
+      <th>タイトル</th>
       <td><%= favorite_igcl.title %></td>
     </tr>
     <tr>
-      <th>内容:</th>
+      <th>内容</th>
       <td><%= favorite_igcl.content %></td>
     </tr>
     <tr>
-      <th>投稿者:</th>
+      <th>投稿者</th>
       <td><%= favorite_igcl.user.name%></td>
     </tr>
   </table>
